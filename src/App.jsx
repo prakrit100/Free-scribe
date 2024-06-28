@@ -31,7 +31,7 @@ function App() {
 
   useEffect(() => {
     if (!worker.current) {
-      worker.current = new Worker(new URL('./utils/whisper.worker.js', import.meta.url), {
+      worker.current = new Worker(new URL('./Utils/whisper.worker.js', import.meta.url), {
         type: 'module'
       })
     }
@@ -73,7 +73,6 @@ function App() {
 
   async function handleFormSubmission() {
     if (!file && !audioStream) { return }
-
     let audio = await readAudioFrom(file ? file : audioStream)
     const model_name = `openai/whisper-tiny.en`
 
